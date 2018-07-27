@@ -105,7 +105,7 @@ public class ShiroConfiguration {
         // 除了上面定义的url之外,其余全部url全都拦截!
         // 当在MyShiroRealm中通过登录认证后,这些拦截的资源才可见.(没加其他权限控制的前提下).
         // 这里可以灵活配置. 例如jeecg中就是所有资源都默认可见! 只有配置了并入库的资源才会分配后才可见!
-        filterChainDefinitionMap.put("/**", "authc");
+        filterChainDefinitionMap.put("/**", "anon");//TODO 为了便于其他功能的开发,暂时把值改成 anon, 以后改回 authc.
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
     }
 
