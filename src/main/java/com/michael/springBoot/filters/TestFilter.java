@@ -1,5 +1,8 @@
 package com.michael.springBoot.filters;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -11,6 +14,8 @@ import java.io.IOException;
  * @date 2018/3/21
  */
 public class TestFilter implements Filter {
+
+    Logger logger = LoggerFactory.getLogger(TestFilter.class);
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -24,12 +29,13 @@ public class TestFilter implements Filter {
         //i can writer other business code right here...
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
-        System.out.println("TestFilter is runnning=====================,request url is : "+request.getRequestURI());
+        logger.info("@@@TestFilter in service-producer-node1 is running," +
+                "request url is : {}", request.getRequestURI());
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
     public void destroy() {
-
+        //No need to do anything.
     }
 }
